@@ -60,9 +60,11 @@
     gap: 10px;
   }
 
-  .products__list__item {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(3, minmax(0, 1fr));/*3 equals columns*/
-    gap: 10px;
+  .products__list {
+    & > div {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(3, minmax(0, 1fr));/*3 equals columns*/
+        gap: 10px;
+    }
   }
