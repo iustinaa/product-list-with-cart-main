@@ -2,73 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 interactive-widget=resizes-content"> <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="style.css">
   <title>Frontend Mentor | Product list with cart</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
-
-  Desserts
-
-  Waffle with Berries
-  Waffle
-  6.50
-  Add to Cart
-
-  Vanilla Bean Crème Brûlée
-  Crème Brûlée
-  7.00
-  Add to Cart
-
-  Macaron Mix of Five
-  Macaron
-  8.00
-  Add to Cart
-
-  Classic Tiramisu
-  Tiramisu
-  5.50
-  Add to Cart
-
-  Pistachio Baklava
-  Baklava
-  4.00
-  Add to Cart
-
-  Lemon Meringue Pie
-  Pie
-  5.00
-  Add to Cart
-
-  Red Velvet Cake
-  Cake
-  4.50
-  Add to Cart
-
-  Salted Caramel Brownie
-  Brownie
-  4.50
-  Add to Cart
-
-  Vanilla Panna Cotta
-  Panna Cotta
-  6.50
-  Add to Cart
-
-  Your Cart (<!-- Quantity -->)
-  Your added items will appear here
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="products">
+    <main class="products__list">
+      <h1>Desserts</h1>
+      <article class="products__list__item">
+        <div class="products__list__item-image">
+          <a href=""></a>
+        </div>
+        <button><span></span>Add to Cart</button>
+        <div class="products__list__item-category">Waffle</div>
+        <h2 class="products__list__item-title">Waffle with Berries</h2>
+        <div class="products__list__item-price">6.50</div>
+      </article>
+      <article class="products__list__item">
+        <div class="products__list__item-image">
+          <a href=""></a>
+        </div>
+        <button><span></span>Add to Cart</button>
+        <div class="products__list__item-category">Tiramisu</div>
+        <h2 class="products__list__item-title">Classic Tiramisu</h2>
+        <div class="products__list__item-price">5.50</div>
+      </article><article class="products__list__item"></article>
+        <div class="products__list__item-image">
+          <a href=""></a>
+        </div>
+        <button><span></span>Add to Cart</button>
+        <div class="products__list__item-category">Baklava</div>
+        <h2 class="products__list__item-title">Pistachio Baklava</h2>
+        <div class="products__list__item-price">4.00</div>
+      </article>
+      <article class="products__list__item">
+        <article class="products__list__item">
+          <div class="products__list__item-image">
+            <a href=""></a>
+          </div>
+          <button><span></span>Add to Cart</button>
+          <div class="products__list__item-category">Pie</div>
+          <h2 class="products__list__item-title">Lemon Meringue Pie</h2>
+          <div class="products__list__item-price">5.00</div>
+        </article><article class="products__list__item"></article>
+          <div class="products__list__item-image">
+            <a href=""></a>
+          </div>
+          <button><span></span>Add to Cart</button>
+          <div class="products__list__item-category">Cake</div>
+          <h2 class="products__list__item-title">Red Velvet Cake</h2>
+          <div class="products__list__item-price">4.50</div>
+        </article>
+      </article>
+        <div class="products__list__item-image">
+          <a href=""></a>
+        </div>
+        <button><span></span>Add to Cart</button>
+        <div class="products__list__item-category">Brownie</div>
+        <h2 class="products__list__item-title">Salted Caramel Brownie</h2>
+        <div class="products__list__item-price">4.50</div>
+      </article><article class="products__list__item"></article>
+        <div class="products__list__item-image">
+          <a href=""></a>
+        </div>
+        <button><span></span>Add to Cart</button>
+        <div class="products__list__item-category">Panna Cotta</div>
+        <h2 class="products__list__item-title">Vanilla Panna Cotta</h2>
+        <div class="products__list__item-price">6.50</div>
+      </article>
+    </main>
+    <aside class="products__cart">
+        <h1>Your Cart(0)</h1>
+        <img src="" alt="Empty cart">
+        <p>Your added items will appear here</p>
+    </aside>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
