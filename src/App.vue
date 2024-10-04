@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import productItem from "@/components/productItem.vue";
 import rahat from "@/data.json"; // this automatically converts a json to a js array/object
 
@@ -18,11 +18,22 @@ const addToCart = (name, price) => {
 };
 
 const removeFromCart = (product) => {
-  const index = this.cart.indexOf(product);
+  const index = cart.indexOf(product);
     if (index > -1) {
-      this.cart.splice(index, 1);
+      cart.splice(index, 1);
+      cartCount.value--;
     }
 }
+
+const confirmOrder = () => {
+  alert('Order Confirmed!');
+}; //This function will be executed when the button is clicked, displaying an alert message.
+
+const totalCost = computed(() => {
+  return cart.reduce((total, product) => {
+    return total + product[1];
+  }, 0);
+}); //The totalCost computed property calculates the total cost by iterating over the cart array and summing up the product prices multiplied by their quantities.
 
   // console.log();
 
@@ -45,16 +56,24 @@ const removeFromCart = (product) => {
       </div>
     </main>
     <aside class="products__cart">
-        <h1 class="red-hat-text-bold">Your Cart({{ cartCount }})</h1>
-        <ul>
-          <li v-for="product in cart" :key="product[0]" @addToCart="addToCart">
-            {{ product[0]}} - {{ product[1]}}
-            <button @click="removeFromCart(product)">Remove</button>
-          </li>
-        </ul>
-        <div>
+        <h1 class="red-hat-text-bold">Your Cart ({{ cartCount }})</h1>
+        <div class="products__cart_empty" v-if="cart.length === 0"><!--The v-if directive is added to the products__cart_empty div. This directive will only render the div if the cart array is empty (cart.length === 0).-->
           <img src="./assets/images/illustration-empty-cart.svg" alt="Empty cart">
           <p class="red-hat-text-semibold">Your added items will appear here</p>
+        </div>
+        <div class="products__cart_added" v-if="cart.length >= 1">
+          <ul>
+            <li v-for="product in cart" :key="product[0]" @addToCart="addToCart">
+              <span class="products__list__item-title red-hat-text-semibold">{{ product[0] }}</span> <!-- Product name in a span -->
+              <span class="">{{ product[1] }}</span> <!-- Product price in a span -->
+              <button class="btn_remove" @click="removeFromCart(product)">
+                <img src="./assets/images/icon-remove-item.svg" alt="Remove Product">
+              </button>
+            </li>
+          </ul>
+          <p>Order Total <span class="red-hat-text-bold">{{ totalCost }}</span></p><!--The total cost is displayed using the totalCost computed property.-->
+          <p><img src="./assets/images/icon-carbon-neutral.svg" alt="Carbon Neutral">This is a <span class="red-hat-text-bold"> carbon-neutral</span> delivery</p>
+          <button class="confirm-order" @click="confirmOrder">Confirm Order</button>
         </div>
     </aside>
   </div>

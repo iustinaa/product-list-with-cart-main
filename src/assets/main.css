@@ -18,6 +18,7 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: "Red Hat Text", sans-serif;
 }
 /*
   5. Improve media defaults
@@ -48,11 +49,12 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 :root {
-  --primary-color: hsl(14, 86%, 42%);
+  --primary-color: hsl(14, 85%, 32%);
   --secondary-color: hsl(159, 69%, 38%);
   --category-color: hsl(8, 7%, 40%);
-  --price-color: hsl(14, 81%, 41%);
   --font-size: 16px;
+  --grey-dark: #CAAFA7;
+  --grey-light: hsl(26, 54%, 97%);
 }
 
 .red-hat-text-regular {
@@ -74,6 +76,29 @@ p, h1, h2, h3, h4, h5, h6 {
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
+}
+
+.btn_remove {
+  background-color: #fff;
+  border-color: var(--grey-dark);
+  border-radius: 50%;
+  border-width: 1px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #000;
+
+    img {
+      filter: invert(1); 
+    }
+  }
+
+  svg {
+    margin: auto;
+  }
 }
 
 body {
@@ -137,7 +162,7 @@ body {
 }
 
 .products__list__item-price {
-  color: var(--price-color);
+  color: var(--primary-color);
 }
 
 .products__list__item {
@@ -156,7 +181,7 @@ body {
     bottom: .6rem;
     left: 50%;
     transform: translateX(-50%);
-    min-width: 139px;
+    min-width: 149px;
   }
 
   h2 {
@@ -176,7 +201,7 @@ body {
   }
 
   h1 {
-    color: var(--price-color);
+    color: var(--primary-color);
     padding-bottom: 2rem;
   }
 
@@ -192,4 +217,54 @@ body {
     color: var(--category-color);
     padding-top: 2rem;
   }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+@scope (.products__cart_added) {
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    
+    &:last-of-type {
+      justify-content: center;
+      background-color: var(--grey-light);
+      border-radius: 10px;
+      padding: 1rem !important;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    &:first-of-type {
+      justify-content: space-between;
+      line-height: 45px;
+
+      span {
+        font-size: 30px;
+      }
+    }
+
+    img {
+      margin: 0 !important;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+
+  span {
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+}
+
+.confirm-order {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  padding: .5rem 3rem;
 }
