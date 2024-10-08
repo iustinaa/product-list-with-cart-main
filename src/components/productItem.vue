@@ -18,11 +18,4 @@ const mobileImage = new URL(props.image.mobile, import.meta.url);
 const tabletImage = new URL(props.image.tablet, import.meta.url);
 const desktopImage = new URL(props.image.desktop, import.meta.url);
 
-// let cartQuantityValue = 0;
-// function cartQuantity() {
-//   cartQuantityValue = cartQuantityValue + 1;
-//   console.log(`Cart quantity: ${cartQuantityValue}`)
-// }
-
-
 </script>

@@ -1,12 +1,14 @@
 <script setup>
 import { reactive, ref, computed } from "vue";
 import productItem from "@/components/productItem.vue";
+import orderConfirmedModal from "@/components/orderConfirmedModal.vue";
 import rahat from "@/data.json"; // this automatically converts a json to a js array/object
 
 const products = ref(rahat);
 const cart = reactive([]); // new empty reactive array for vue
+const showModal = ref(false);//creates  a reactive reference showModal initialized to false.This means showModal is a reactive state variable that Vue will update the DOM for whenever its value changes. When showModal is set to true, it’ll trigger the modal to be shown, and setting it back to false will hide it again.
 
-  // Define a reactive variable for the cart count
+// Define a reactive variable for the cart count
 const cartCount = ref(0);
 
 // Define a method to increment the cart count
@@ -25,10 +27,6 @@ const removeFromCart = (product) => {
     }
 }
 
-const confirmOrder = () => {
-  alert('Order Confirmed!');
-}; //This function will be executed when the button is clicked, displaying an alert message.
-
 const totalCost = computed(() => {
   return cart.reduce((total, product) => {
     return total + product[1];
@@ -38,6 +36,18 @@ const totalCost = computed(() => {
   // console.log();
 
 </script>
+
+<style>
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+</style>
 
 <template>
   <div class="products">
@@ -73,9 +83,11 @@ const totalCost = computed(() => {
           </ul>
           <p>Order Total <span class="red-hat-text-bold">{{ totalCost }}</span></p><!--The total cost is displayed using the totalCost computed property.-->
           <p><img src="./assets/images/icon-carbon-neutral.svg" alt="Carbon Neutral">This is a <span class="red-hat-text-bold"> carbon-neutral</span> delivery</p>
-          <button class="confirm-order" @click="confirmOrder">Confirm Order</button>
+          <button class="order" @click="showModal = true">Confirm Order</button>
+          <orderConfirmedModal v-if="showModal" class="overlay" @close="showModal = false" :cart="cart" :totalCost="totalCost"/><!--The :cart="cart" part is binding a cart object as a prop to the orderConfirmedModal component. It’s saying, "Hey, modal, here’s the cart object you’ll need to display info."-->
         </div>
     </aside>
+
   </div>
 </template>
 
