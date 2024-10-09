@@ -12,10 +12,10 @@ const showModal = ref(false);//creates  a reactive reference showModal initializ
 const cartCount = ref(0);
 
 // Define a method to increment the cart count
-const addToCart = (name, price) => {
+const addToCart = (name, price, image) => {
   // console.log(name, price)
   cartCount.value++;
-  cart.push([name, price]);
+  cart.push([name, price, image]);
   console.log(cart);
 };
 
@@ -36,18 +36,6 @@ const totalCost = computed(() => {
   // console.log();
 
 </script>
-
-<style>
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-</style>
 
 <template>
   <div class="products">
