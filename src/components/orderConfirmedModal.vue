@@ -8,7 +8,7 @@
                 <ul>
                     <li class="red-hat-text-bold" v-for="product in cart" :key="product[0]" @addToCart="addToCart">
                         <img :src="returnUrlMagicCrap(product[2])" alt="">
-                        <span class="products__list__item-title red-hat-text-semibold">{{ product[0] }}</span> <!-- Product name in a span -->
+                        <span class="products__list__item-title red-hat-text-semibold">{{ product[0] }} - Quantity: {{ product.quantity }}</span> <!-- Product name in a span -->
                         <span class="">${{ product[1] }}</span> <!-- Product price in a span -->
                     </li>
                 </ul>

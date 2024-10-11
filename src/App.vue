@@ -13,9 +13,21 @@ const cartCount = ref(0);
 
 // Define a method to increment the cart count
 const addToCart = (name, price, image) => {
+
+  const existingProduct = cart.findIndex(item => item[0] === name);
+
+
+  console.log(existingProduct);
   // console.log(name, price)
   cartCount.value++;
-  cart.push([name, price, image]);
+  
+  if (existingProduct != -1) {
+    cart[existingProduct][3]++; 
+  } else {
+    cart.push([name, price, image, 1]);
+  }
+  
+  
   console.log(cart);
 };
 
@@ -29,7 +41,7 @@ const removeFromCart = (product) => {
 
 const totalCost = computed(() => {
   return cart.reduce((total, product) => {
-    return total + product[1];
+    return total + product[1] * product[3];
   }, 0);
 }); //The totalCost computed property calculates the total cost by iterating over the cart array and summing up the product prices multiplied by their quantities.
 
@@ -62,6 +74,7 @@ const totalCost = computed(() => {
         <div class="products__cart_added" v-if="cart.length >= 1">
           <ul>
             <li v-for="product in cart" :key="product[0]" @addToCart="addToCart">
+              <span>{{ product[3] }}</span>
               <span class="products__list__item-title red-hat-text-semibold">{{ product[0] }}</span> <!-- Product name in a span -->
               <span class="">{{ product[1] }}</span> <!-- Product price in a span -->
               <button class="btn_remove" @click="removeFromCart(product)">
